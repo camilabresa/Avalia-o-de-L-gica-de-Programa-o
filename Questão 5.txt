@@ -1,0 +1,64 @@
+int main(void) {
+
+  //Declaração de variáveis.
+  int produto, quantidade, inte = 0, tproduto = 0, reais;
+  int i = 1;
+  float valor, valortotal = 0, media = 0, centavos;
+  int x, cedulas[] = {100, 50, 20, 10, 5, 2, 1}, qntcedulas[6] = {0};
+  float qntmoedas = 0;
+
+
+  //Estrutura de repetição para quantidade de produtos e seus respectivos valores.
+  do {
+  printf("Informe a quantidade de produtos que deseja comprar: ");
+  scanf("%d", &produto);
+
+  //Se a quantidade for igual ou menor que 0, ele para o loop.
+  if (produto <= 0) 
+
+  break;
+  
+  printf("Agora, informe o valor do produto (em real): R$ ");
+  scanf("%f", &valor);
+
+      //Cálculo do valor total da compra.
+       valortotal += produto * valor;
+       tproduto += produto;
+
+    }while (produto > 0);
+    
+      printf("\n");
+      printf("O valor total da sua compra é de: R$ %0.2f\n", valortotal);
+
+    //Cálculo da média do valor.
+    media = valortotal / tproduto;
+  
+  printf("\n");
+  printf("Em média, o valor total dos produtos é: R$ %0.2f\n", media);
+
+  //Separa os reais e os centavos.
+  reais = valortotal / 1; 
+  centavos = (valortotal - reais) * 100; 
+
+  printf("\n");
+  printf("O valor total da compra em reais e centavos é de: %d reais e %0.2f centavos.\n", reais, centavos);
+
+  //Cálculo de separação de cédulas e moedas.
+  for (x = 0; x < 6; x++) {
+      qntcedulas[x] = reais / cedulas[x]; 
+    reais -= qntcedulas[x] * cedulas[x];
+    }
+
+    qntmoedas = reais;
+
+  //Mostra a quantidade de cédulas e moedas.
+  printf("\nQuantidade de cédulas/moedas:\n");
+  for (x = 0; x < 6; x++) {
+      printf("%d: %d\n", cedulas[x], qntcedulas[x]);
+  }
+
+  printf ("Moedas de 1 real: %0.2f\n", qntmoedas);
+
+
+  return 0;
+} 

@@ -1,0 +1,61 @@
+int main(void) {
+  //Declaração de variáveis.
+  int conta, d1, d2, d3, oconta, soma = 0, inverso;
+  int digverifi, digito, nconta, soma_1, soma_2 , soma_3, digveri_1, digveri_2;
+
+  //Inserção de dados da conta corrente.
+   printf("Bem-vindo! Informe sua conta corrente(4 dígitos): ");
+  scanf("%d", &conta);
+
+    // If e else para verificar se o número é válido (se está entre 1000 e 9999)
+     if (conta < 1000 || conta > 9999) { 
+    printf("\n");
+    printf("Ops! Número inválido. Reinicie o programa e tente novamente.\n"); //Se for inválido, pede pra reiniciar.
+    return 0;
+      
+     } 
+      else {
+      printf("\n");
+      printf("O número informado foi: %d\n", conta); // Se for válido, ele confirma imprimindo uma mensagem na tela.
+      }        
+
+    //Separa os dígitos da conta.
+    digverifi = conta % 10;
+    nconta = conta / 10;
+  
+    d1 = nconta % 10;  
+    d2 = (nconta / 10) % 10;   
+    d3 = (nconta / 100) % 10;
+
+  // Calcula o inverso.
+  inverso = d1 * 100 + d2 * 10 + d3;
+
+  printf ("%d", inverso);  
+  soma = nconta + inverso;
+
+  // Cálculo do dígito verificador.
+  soma_1 = soma /100;
+  soma_2 = (soma / 10) % 10;
+  soma_3 = soma % 10;
+  
+  digveri_1 = soma_1 * 1 + soma_2 * 2 + soma_3 * 3;
+  digveri_2 = digveri_1 % 10; 
+
+  //Imprime uma mensagem com o número da conta e o dígito verificador calculado.
+  printf("\n");
+  printf("O número da sua conta com o digito verificador é: %d-%d\n", nconta, digveri_2);
+
+
+  //If e else para dizer se o digito verificador informado está correto ou não.
+  if (digveri_2 == digverifi) {
+      printf("\n");
+      printf("O dígito verificador informado, está correto!\n");
+  } 
+      else {
+      printf("\n");
+      printf("O dígito verificador informado, está incorreto!.\n");
+      }
+
+//Fim do programa.
+  return 0;
+}
